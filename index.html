@@ -10,11 +10,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<head>
 		<title>个人主页</title>
+		<link rel="shortcut icon" type="images/ico" href="images/favicon.ico">
 		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="keywords" content="个人介绍，用于展示自己信息、作品、工作经历" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LTyoLGskVL2xk5fjZLZ3dGHW"></script>
 		<script type="application/x-javascript">
 			addEventListener("load", function() {
 				setTimeout(hideURLbar, 0);
@@ -27,7 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<!---- start-smoth-scrolling---->
 		<script type="text/javascript" src="js/move-top.js"></script>
-		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript" src="js/jquery.particleground.min.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event) {
@@ -44,12 +46,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<body>
 		<!--start-header-section-->
+		<!--canva背景-->
+		<div id="particles"></div>
+		<!--canva背景-->
 		<div class="header-section">
 			<div class="continer">
 				<img src="images/p1.png">
 				<h1>龚宇帆</h1>
 				<p>两年工作经验WEB前端开发工程师（专注前端）</p>
-				<a href="#contact" class="scroll top"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+				<!--<a href="#contact" class="scroll top"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>-->
 			</div>
 		</div>
 		<!--end header-section-->
@@ -58,14 +63,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container">
 				<div class="study-grids">
 					<div class="col-md-6 study-grid">
-						<h3>study..<span>!</span></h3>
+						<h3>work experience<span>!</span></h3>
 						<div class="study1">
-							<p>Lorem ipsum dolor sit amet consectetur <label>( 2010 )</label></p>
-							<p>Nam libero tempore, cum soluta nobis <label>( 2011 )</label></p>
-							<p>Lorem Ipsum, you need to be sure there <label>( 2009 )</label></p>
-							<p>Nam libero tempore, cum soluta nobis <label>( 2011 )</label></p>
-							<p>Lorem ipsum dolor sit amet consectetur<label>( 2014 )</label></p>
-							<p>libero tempore, cum soluta nobis Nam <label>( 2011 )</label></p>
+							<p><a href="javascript:void(0)" title="点击查看详情">来到上海的第一家公司（亿翰中国），开始了小菜鸟的成长之路。</a> <label>( 2014.11~2015.8 )</label></p>
+							<p><a href="javascript:void(0)" title="点击查看详情">第二家公司是一个创业公司，是我工作中遇到的一个气氛最好的一个公司。</a><label>( 2011 )</label></p>
+							<p><a href="javascript:void(0)" title="点击查看详情">Lorem Ipsum, you need to be sure there </a><label>( 2009 )</label></p>
+							<p><a href="javascript:void(0)" title="点击查看详情">Nam libero tempore, cum soluta nobis </a><label>( 2011 )</label></p>
+							<p><a href="javascript:void(0)" title="点击查看详情">Lorem ipsum dolor sit amet consectetur</a><label>( 2014 )</label></p>
+							<p><a href="javascript:void(0)" title="点击查看详情">libero tempore, cum soluta nobis Nam </a><label>( 2011 )</label></p>
 						</div>
 					</div>
 					<div class="col-md-6 study-grid">
@@ -175,20 +180,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 			<!--end-contact-section-->
-			<!--start-map-section-->
+			<!--百度地图部分-->
 			<div class="google-map">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114829.39166857985!2d-80.19154352520549!3d25.92148032545394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b2eec0a4b145%3A0x6fb7ea318103f481!2sCollins+Ave%2C+Sunny+Isles+Beach%2C+FL+33160%2C+USA!5e0!3m2!1sen!2sin!4v1436081255308"></iframe>
+				<div id="allmap" style="width: 100%;height: 500px;"></div>
 			</div>
-			<!--end-map-section-->
+			<!--百度地图部分-->
 			<!--start-footer-section-->
 			<div class="footer-section">
 				<div class="container">
 					<div class="footer-top">
 						<p>&copy; 2015 <span>Hello.</span> All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 					</div>
-					<script type="text/javascript">
-						$(document).ready(function() {
-							/*
+					<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+				</div>
+			</div>
+			<!--end-footer-section-->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					/*
 							var defaults = {
 					  			containerID: 'toTop', // fading element id
 								containerHoverID: 'toTopHover', // fading element hover id
@@ -196,16 +205,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								easingType: 'linear' 
 					 		};
 							*/
-							$().UItoTop({
-								easingType: 'easeOutQuart'
-							});
-						});
-					</script>
-					<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-				</div>
-			</div>
-			<!--end-footer-section-->
-
+					$().UItoTop({
+						easingType: 'easeOutQuart'
+					});
+				});
+			</script>
+			<script src="js/main.js"></script>
 	</body>
 
 </html>
