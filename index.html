@@ -16,7 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="keywords" content="龚宇帆WEB前端开发工程师" />
-		<meta name="description" content="龚宇帆的个人介绍，用于展示自己信息、作品、工作经历" /> 
+		<meta name="description" content="龚宇帆的个人介绍，用于展示自己信息、作品、工作经历" />
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LTyoLGskVL2xk5fjZLZ3dGHW"></script>
 		<script type="application/x-javascript">
 			addEventListener("load", function() {
@@ -32,6 +32,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script type="text/javascript" src="js/move-top.js"></script>
 		<script type="text/javascript" src="js/jquery.particleground.min.js"></script>
 		<script type="text/javascript">
+			document.onreadystatechange = function() {
+				if (document.readyState == "complete") {
+					document.querySelector(".progressbarBG").style.display="none";
+				}
+			}
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event) {
 					event.preventDefault();
@@ -47,6 +52,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<body>
 		<!--start-header-section-->
+		<!--进度条-->
+		<div class="progressbarBG">
+			<div class="progressBar-container">
+				<div class="progressBar">
+					<div class="progressBarBor">
+						<div class="progressBar-shadow"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--进度条END-->
 		<!--canva背景-->
 		<div id="particles"></div>
 		<!--canva背景-->
